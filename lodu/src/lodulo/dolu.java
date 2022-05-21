@@ -2,7 +2,7 @@ package lodulo;
 
 public class dolu {
 	
-	int a=10,b=20;
+	int x=100,y=200,z=300;
 
 	public static void main(String[] args) {
 
