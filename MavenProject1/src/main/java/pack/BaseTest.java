@@ -2,8 +2,6 @@ package pack;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Date;
 import java.util.Properties;
 
@@ -41,6 +39,15 @@ public class BaseTest
 	public static Properties orProp;
 	public static ExtentReports rep;
 	public static ExtentTest test;
+	public static String filePath;
+	
+	static
+	{
+		Date dt = new Date();
+		
+		filePath = dt.toString().replace(':', '_').replace(' ', '_');
+		}
+	
 	public static void init() throws Exception
 	
 	{
@@ -85,11 +92,13 @@ public static void launch(String browser)
 
 
 {
-	if(p.getProperty(browser).equals("chrome"))
+	if(browser.equals("chrome"))
 	{
 		WebDriverManager.chromedriver().setup();
 		
 		ChromeOptions option = new ChromeOptions();
+		
+		
 		
 		option.addArguments("user-data-dir=C:\\Users\\Prem\\AppData\\Local\\Google\\Chrome\\User Data\\Profile 2");
 		
@@ -102,9 +111,10 @@ public static void launch(String browser)
 		//option.addArguments("--proxy-server=https://192.168.10.1:9090");
 		
 		driver=new ChromeDriver(option);
+		
 			
 	}
-	else if(p.getProperty(browser).equals("firefox"))
+	else if(browser.equals("firefox"))
 	{
 
 		WebDriverManager.firefoxdriver().setup();
@@ -262,8 +272,8 @@ public static boolean isElementPresent(String locatorkey)
 {
 	System.out.println("Checking the Element Presence : "+locatorkey);
 	
-	WebDriverWait wait = new WebDriverWait(driver, 30);
-	
+	WebDriverWait wait = new WebDriverWait(driver, 50);
+
 	try {
 		
 		
@@ -413,4 +423,3 @@ private static void takesScreenshot() throws Exception
 
 
 }
-
