@@ -8,7 +8,7 @@ public class HI {
 		
 		System.out.println("BOLO");
 		
-		System.out.println("polo");
+		System.out.println("p  olo");
 	}
 
 }
